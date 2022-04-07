@@ -1,17 +1,17 @@
 import logo from './logo.svg';
-import React, { useState } from 'react';
+import React from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import './App.css';
-import Popup from './Popup';
 
-function App() {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const Modal = () => (
+    <Popup trigger={<button className="button"> Open Modal </button>} modal>
+      <span> Modal content </span>
+    </Popup>
+  );
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
-
-  return (
+  const Main = () => (
     <div className="App">
       <header className="App-header">
         <h1>Horse Racing</h1>
@@ -23,27 +23,42 @@ function App() {
         <button>➜</button>
         </div>
         <br></br>
-        <input
-          type="button"
-          value="How To Play?"
-          onClick={togglePopup}
-        />
-
-      {isOpen && <Popup
-      content={<>
-        <b>How To Play Horse Racing</b>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <input
-          type="button"
-          value="Got It!"
-          onClick={togglePopup}
-        />
-      </>}
-        handleClose={togglePopup}
-      />}
+        <Popup
+    trigger={<button className="button">How To Play?</button>}
+    modal
+    nested
+  >
+    {close => (
+      <div className="modal">
+        <button className="close" onClick={close}>
+          &times;
+        </button>
+        <div className="header">Rules</div>
+        <div className="content">
+          {' '}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+          Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+          delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+          commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+          explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+        </div>
+        <div className="actions">
+            <button className="button" onClick={() => {
+                console.log('modal closed');
+                close();
+              }}
+            >
+            Got It!
+          </button>
+        </div>
+      </div>
+    )}
+  </Popup>
       </header>
     </div>
   );
-}
 
-export default App;
+
+export default Main;
