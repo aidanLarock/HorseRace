@@ -49,8 +49,11 @@ h3{
   margin:0px;
 }
 
+.Players input{
+  width:60px;
+}
+
 input{
-  width:50px;
   background-color: #404550;
   border: #282c34;
   border-radius: 8px;
@@ -60,11 +63,76 @@ input{
 }
 
 button{
-  background-color: #404550;
+  content:'Start';
+  font-size: 32px;
   width:60px;
   height:60px;
   border: #797d86;
   border-style: solid;
+  border-width: 0px;
   border-radius: 8px;
-  color: white;
+  background: linear-gradient(to right, #232529 50%, #404550 50%);
+  background-size: 200% 100%;
+  background-position:right bottom;
+  color:white;
+}
+
+button:hover{
+  cursor:pointer;
+  background-position:left bottom;
+  transition:all 0.4s ease;
+  content:'->';
+}
+
+
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+input[type="button"]{
+  cursor:pointer;
+  background: linear-gradient(to right, #232529 50%, #404550 50%);
+  background-size: 200% 100%;
+  background-position:right bottom;
+}
+
+input[type="button"]:hover{
+  background-position:left bottom;
+  transition:all 0.4s ease;
+}
+ 
+.box {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #282c34;
+  border-radius: 4px;
+  padding: 20px;
+  border: 0px solid #999;
+  overflow: auto;
+}
+ 
+.close-icon {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(20% - 30px);
+  top: calc(100vh - 85vh - 33px);
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  color:#282c34;
+  text-align: center;
+  border: 0px solid #999;
+  font-size: 20px;
 }
